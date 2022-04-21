@@ -11,6 +11,7 @@ namespace ERS.Model
     {   
 
         public DbSet<Guide> Guide { get; set; }
+        public DbSet<Picture> Picture  { get; set; }
         public ConnectDB()
         {
             //Database.EnsureDeleted();
@@ -28,6 +29,7 @@ namespace ERS.Model
 
             modelBuilder.Entity<Guide>().ToTable("Guide");
             modelBuilder.Entity<Guide>().HasData(new ERS.Model.Guide[] { new ERS.Model.Guide { Id=1, MainGuideId=1, Name="Главное окно" } }) ;
+            modelBuilder.Entity<Picture>().ToTable("Picture");
         }
     }
 }

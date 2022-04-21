@@ -14,6 +14,7 @@ namespace ERS.ViewModel
     public class MainViewModel:ReactiveObject
     {
         private GuideViewModel guideViewModel;
+        public static PictureViewModel pictureViewModel { get; private set; }   
         private ObservableCollection<UserControl> _controls { get; set; }
 
         
@@ -22,7 +23,8 @@ namespace ERS.ViewModel
         public MainViewModel()
         {
             guideViewModel = new GuideViewModel();
-            _controls = new ObservableCollection<UserControl> { new View.Welcome() , new View.Guide.MainGuide(guideViewModel)};
+            pictureViewModel = new PictureViewModel();
+            _controls = new ObservableCollection<UserControl> { new View.Welcome() , new View.Guide.MainGuide(guideViewModel), new View.Picture.PictureMain(pictureViewModel)};
             MainControl=_controls[0];
         }
 

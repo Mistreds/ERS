@@ -41,9 +41,10 @@ namespace ERS.ViewModel
             addGuide.Show();
         });
         public ReactiveCommand<Unit, Unit> AddNewGuideCommand => ReactiveCommand.Create(() => {
-            Model.Guide.AddGuides(NewGuide);
-            NewGuide=new Model.AddGuide();
+            if (!Model.Guide.AddGuides(NewGuide))
+                return;
             SelectAllGuide();
+            NewGuide=new Model.AddGuide();
         });
         public ReactiveCommand<Model.Guide, Unit> DeleteGuid => ReactiveCommand.Create<Model.Guide>(DeleteGuidCommand);
         private void DeleteGuidCommand(Model.Guide guid)
@@ -51,6 +52,14 @@ namespace ERS.ViewModel
             Model.Guide.DeleteGuide(guid);
             SelectAllGuide();
 
+        }
+        public ReactiveCommand<string, Unit> FindGuide => ReactiveCommand.Create<string>(FindGuideCommand);
+        private void FindGuideCommand(string find)
+        {
+            if (string.IsNullOrEmpty(find))
+                Guides=Model.Guide.GetGuides();
+            else
+                Guides=Model.Guide.GetGuidesFromFind(find);
         }
         
 

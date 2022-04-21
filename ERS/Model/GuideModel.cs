@@ -44,6 +44,16 @@ namespace ERS.Model
             }
             
         }
+        public static ObservableCollection<Guide> GetGuidesFromFind(string Find)
+        {
+            using (var db = new ConnectDB())
+            {
+
+                return new ObservableCollection<Guide>(db.Guide.FromSqlInterpolated($"SELECT * FROM Guide where id!=1 and Name like lower({"%"+Find.ToLower()+"%"}) ").Select(p => new Guide(p.Id, p.Name, p.MainGuideId, p.Url, p.ByteFile)));
+                //Обычно я использую для запросов чисто linq но тут как показала практика такой запрос работает эффективнее
+            }
+
+        }
         public static ObservableCollection<Guide> GetGuidesForCombo()
         {
             using (var db = new ConnectDB())
@@ -53,13 +63,18 @@ namespace ERS.Model
             }
 
         }
-        public static void AddGuides(Guide new_guide)
+        public static bool AddGuides(Guide new_guide)
         {
             using (var db = new ConnectDB())
             {
-
+                if (new_guide.Url==null )
+                {
+                    System.Windows.MessageBox.Show("Выберите html файл или введите url сайта","Ошибка");
+                    return false;
+                }
                 db.Add(new_guide);
                 db.SaveChanges();
+                return true;
             }
         }
         public static void DeleteGuide(Guide del_guide)
@@ -134,5 +149,11 @@ namespace ERS.Model
             Url=Path.GetFileName(FileName);
 
         });
+        public AddGuide()
+        {
+            MainGuideId=1;
+            Name="Меню";
+        }
+        
     }
 }

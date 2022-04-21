@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="ERS.View.Picture.PictureOnGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ERS.View.Picture"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="180" Background="White">
+    <Grid>
+        <Grid.Resources>
+            <ContextMenu x:Key="Menu">
+                <MenuItem Header="Удалить" Click="MenuItem_Click"></MenuItem>
+                <MenuItem Header="Скачать файл" Command="{Binding SaveFile}"></MenuItem>
+            </ContextMenu>
+        </Grid.Resources>
+        <Grid.Style>
+            <Style TargetType="Grid" >
+                <Setter Property="ContextMenu" Value="{ StaticResource Menu}"></Setter>
+            </Style>
+        </Grid.Style>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Source="{Binding Image}" ></Image>
+        <TextBlock  Grid.Row="1" Text="{Binding Name}" TextAlignment="Center"></TextBlock>
+    </Grid>
+</UserControl>

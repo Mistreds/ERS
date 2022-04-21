@@ -12,21 +12,21 @@
         Title="AddGuide" Height="450" Width="600">
     <Grid Background="Gray">
         <Border Background="White" Margin="50" CornerRadius="10" >
-        <StackPanel  >
+            <StackPanel  >
                 <ComboBox  wpf:HintAssist.HintOpacity="1" wpf:HintAssist.Hint="Родительский элемент" Width="350" Margin="5" wpf:HintAssist.IsFloating="True"  ItemsSource="{Binding GuidCombo}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding NewGuide.MainGuideId}" ></ComboBox>
                 <TextBox Text="{Binding NewGuide.Name}"  wpf:HintAssist.HintOpacity="1" Width="350" Margin="5"  wpf:HintAssist.Hint="Наименование" wpf:HintAssist.IsFloating="True" ></TextBox>
-            <StackPanel Orientation="Horizontal" Width="350" Margin="5" >
+                <StackPanel Orientation="Horizontal" Width="350" Margin="5" >
                     <Label Margin="40,0,0,0" Content="Ввести адрес" HorizontalAlignment="Center"></Label>
                     <ToggleButton IsChecked="{Binding NewGuide.IsByte}" HorizontalAlignment="Center" ></ToggleButton>
-                <Label Content="Выбрать локальный html файл" ></Label>
-            </StackPanel>
+                    <Label Content="Выбрать локальный html файл" ></Label>
+                </StackPanel>
                 <StackPanel  Width="350" Margin="5" Orientation="Horizontal" Visibility="{Binding NewGuide.IsByte, Converter={StaticResource BooleanToVisibilityConverter} }">
-                <TextBox IsReadOnly="True" Width="215" Text="{Binding NewGuide.FileName}"></TextBox>
-                <Button Margin="5,0,0,0" Content="Выбрать файл" Command="{Binding NewGuide.OpenFile}" ></Button>
-            </StackPanel>
+                    <TextBox IsReadOnly="True" Width="215" Text="{Binding NewGuide.FileName}"></TextBox>
+                    <Button Margin="5,0,0,0" Content="Выбрать файл" Command="{Binding NewGuide.OpenFile}" ></Button>
+                </StackPanel>
                 <TextBox wpf:HintAssist.HintOpacity="1" Width="350" Margin="5"  wpf:HintAssist.Hint="URL" wpf:HintAssist.IsFloating="True" Text="{Binding NewGuide.Url}" Visibility="{Binding NewGuide.IsByte, Converter={StaticResource InverseBoolToVisConverter} }"></TextBox>
                 <Button  Width="150" Margin="5"  Content="Добавить" Command="{Binding AddNewGuideCommand}"></Button>
-        </StackPanel >
+            </StackPanel >
         </Border>
     </Grid>
 </Window>

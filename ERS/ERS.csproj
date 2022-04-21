@@ -229,9 +229,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ConnectDB.cs" />
+    <Compile Include="Model\GridActivity.cs" />
     <Compile Include="Model\GuideModel.cs" />
+    <Compile Include="Model\PictureModel.cs" />
     <Compile Include="ViewModel\GuideViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\PictureViewModel.cs" />
     <Compile Include="View\Guide\AddGuide.xaml.cs">
       <DependentUpon>AddGuide.xaml</DependentUpon>
     </Compile>
@@ -240,6 +243,15 @@
     </Compile>
     <Compile Include="View\Guide\WebPage.xaml.cs">
       <DependentUpon>WebPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Picture\AddPicture.xaml.cs">
+      <DependentUpon>AddPicture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Picture\PictureMain.xaml.cs">
+      <DependentUpon>PictureMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Picture\PictureOnGrid.xaml.cs">
+      <DependentUpon>PictureOnGrid.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
@@ -265,6 +277,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Guide\WebPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Picture\AddPicture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Picture\PictureMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Picture\PictureOnGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -305,6 +329,10 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\Document\" />
+    <Folder Include="View\Video\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.6.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.0\build\Fody.targets')" />
