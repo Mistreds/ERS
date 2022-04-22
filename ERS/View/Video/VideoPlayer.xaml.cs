@@ -81,6 +81,7 @@ namespace ERS.View.Video
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            if(timerVideoTime!=null)
             timerVideoTime.Stop();
         }
     }
