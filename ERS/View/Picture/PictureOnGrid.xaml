@@ -25,7 +25,7 @@
             <RowDefinition ></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
         </Grid.RowDefinitions> 
-        <Button Height="auto" Width="auto"  MouseDoubleClick="Button_MouseDoubleClick"  Command="{Binding DataContext.OpenGoodPage, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"  CommandParameter="{Binding Id}">
+        <Button Height="auto" Width="auto"  MouseDoubleClick="Button_MouseDoubleClick" >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border >

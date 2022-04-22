@@ -99,6 +99,9 @@ namespace ERS.Model
                     image.BeginInit();
                     image.CacheOption = BitmapCacheOption.OnLoad; // here
                     image.StreamSource = ms;
+                    image.Rotation = Rotation.Rotate0;
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.CreateOptions = BitmapCreateOptions.PreservePixelFormat; 
                     image.EndInit();
                     return image;
                 }
@@ -113,17 +116,26 @@ namespace ERS.Model
     {
         public ReactiveCommand<Unit, Unit> OpenPicture => ReactiveCommand.Create(() => {
             var dialog = new OpenFileDialog();
-            dialog.Filter = "Файлы PNG|*.png|Файлы JPEG|*.jpeg|Файлы JPG|*.jpg";
+            dialog.Filter = "Файлы изображений|*.png;*.jpeg;*.jpg;*.bmp";
             var result = dialog.ShowDialog();
             if (result != System.Windows.Forms.DialogResult.OK)
                 return;
-            FileByte  = File.ReadAllBytes(dialog.FileName);
+            var image = System.Drawing.Image.FromFile(dialog.FileName);
+            FileByte  =ImageToByte2(image);
             FileName = dialog.FileName;
             FileName=Path.GetFileName(FileName);
         });
         public AddPicture()
         {
           
+        }
+       private byte[] ImageToByte2(System.Drawing.Image img)
+        {
+            using (var stream = new MemoryStream())
+            {
+                img.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return stream.ToArray();
+            }
         }
     }
 }
