@@ -131,6 +131,10 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.24.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.24\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -229,12 +233,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\ConnectDB.cs" />
+    <Compile Include="Model\DocumentModel.cs" />
     <Compile Include="Model\GridActivity.cs" />
     <Compile Include="Model\GuideModel.cs" />
     <Compile Include="Model\PictureModel.cs" />
+    <Compile Include="Model\VideoModel.cs" />
+    <Compile Include="ViewModel\DocumentViewModel.cs" />
     <Compile Include="ViewModel\GuideViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PictureViewModel.cs" />
+    <Compile Include="ViewModel\VideoViewModel.cs" />
+    <Compile Include="View\Document\AddDocument.xaml.cs">
+      <DependentUpon>AddDocument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Document\MainDocument.xaml.cs">
+      <DependentUpon>MainDocument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Guide\AddGuide.xaml.cs">
       <DependentUpon>AddGuide.xaml</DependentUpon>
     </Compile>
@@ -253,6 +267,21 @@
     <Compile Include="View\Picture\PictureOnGrid.xaml.cs">
       <DependentUpon>PictureOnGrid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Picture\PictureOnScreen.xaml.cs">
+      <DependentUpon>PictureOnScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Video\AddVideo.xaml.cs">
+      <DependentUpon>AddVideo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Video\VideoMain.xaml.cs">
+      <DependentUpon>VideoMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Video\VideoOnGrid.xaml.cs">
+      <DependentUpon>VideoOnGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Video\VideoPlayer.xaml.cs">
+      <DependentUpon>VideoPlayer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
@@ -268,6 +297,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Document\AddDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Document\MainDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Guide\AddGuide.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -289,6 +326,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Picture\PictureOnGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Picture\PictureOnScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Video\AddVideo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Video\VideoMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Video\VideoOnGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Video\VideoPlayer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -330,9 +387,9 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="View\Document\" />
-    <Folder Include="View\Video\" />
+    <Resource Include="Image\video-preview-pic.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.6.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.6.0\build\Fody.targets')" />

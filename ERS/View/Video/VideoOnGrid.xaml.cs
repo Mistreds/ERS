@@ -13,27 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ERS.View.Picture
+namespace ERS.View.Video
 {
     /// <summary>
-    /// Логика взаимодействия для PictureOnGrid.xaml
+    /// Логика взаимодействия для VideoOnGrid.xaml
     /// </summary>
-    public partial class PictureOnGrid : UserControl
+    public partial class VideoOnGrid : UserControl
     {
-        public PictureOnGrid()
+        public VideoOnGrid()
         {
             InitializeComponent();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            Model.Picture.DeletePicture(DataContext as Model.Picture);
-            ViewModel.MainViewModel.pictureViewModel.GetPicture();
+            Model.Video.DeleteVideo(DataContext as Model.Video);
+            ViewModel.MainViewModel.videoViewModel.GetVideo();
         }
 
         private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            ViewModel.MainViewModel.pictureViewModel.SelectPicture(DataContext as Model.Picture);
+            ViewModel.MainViewModel.videoViewModel.SelectVideo(DataContext as Model.Video);
         }
     }
 }

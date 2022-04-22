@@ -13,22 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ERS.View.Picture
+namespace ERS.View.Document
 {
     /// <summary>
-    /// Логика взаимодействия для PictureMain.xaml
+    /// Логика взаимодействия для MainDocument.xaml
     /// </summary>
-    public partial class PictureMain : UserControl
+    public partial class MainDocument : UserControl
     {
-        public PictureMain(ViewModel.PictureViewModel pictureViewModel)
+        public MainDocument(ViewModel.DocumentViewModel documentViewModel)
         {
             InitializeComponent();
-            this.DataContext = pictureViewModel;
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            
+            this.DataContext = documentViewModel;
         }
     }
 }

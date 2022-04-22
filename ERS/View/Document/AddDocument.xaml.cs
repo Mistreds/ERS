@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ERS.View.Picture
+namespace ERS.View.Document
 {
     /// <summary>
-    /// Логика взаимодействия для PictureMain.xaml
+    /// Логика взаимодействия для AddDocument.xaml
     /// </summary>
-    public partial class PictureMain : UserControl
+    public partial class AddDocument : Window
     {
-        public PictureMain(ViewModel.PictureViewModel pictureViewModel)
+        public AddDocument()
         {
             InitializeComponent();
-            this.DataContext = pictureViewModel;
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

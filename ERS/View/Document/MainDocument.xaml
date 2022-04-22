@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="ERS.View.Document.MainDocument"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ERS.View.Document"
+             mc:Ignorable="d" 
+               xmlns:ViewModel="clr-namespace:ERS.ViewModel"
+             d:DataContext="{d:DesignInstance Type=ViewModel:DocumentViewModel}"
+              xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="Добавить документ" Width="170" Command="{Binding OpenNewDocument}"></Button>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox wpf:HintAssist.IsFloating="False" x:Name="GuideFind" Text="{Binding Find}"  Padding="10,7,0,7" Height="35" Margin="5" Foreground="Black" wpf:HintAssist.Hint="Поиск"   Style="{StaticResource MaterialDesignOutlinedTextBox}" ></TextBox>
+                <Button Grid.Column="1" Width="150" Content="Поиск" Command="{Binding FindDocument}"   CommandParameter="{Binding ElementName=GuideFind, Path=Text}"></Button>
+            </Grid>
+          
+        </Grid>
+        <DataGrid Grid.Row="1" IsReadOnly="True" ItemsSource="{Binding Documents}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="1*" Header="Наименование документа" Binding="{Binding Name}"> </DataGridTextColumn>
+                <DataGridTextColumn  Width="1*" Header="Наименование файла" Binding="{Binding FileName}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.Resources>
+                <ContextMenu x:Key="menu">
+                    <MenuItem Header="Открыть файл" Command="{Binding OpenFile}"></MenuItem>
+                    <MenuItem Header="Скачать файл" Command="{Binding SaveFile}"></MenuItem>
+                    <MenuItem Header="Удалить файл"   Command="{Binding Path=DataContext.DeleteDocument,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"  CommandParameter="{Binding Path=SelectedItem,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"></MenuItem>
+                </ContextMenu>
+            </DataGrid.Resources>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow" BasedOn="{StaticResource MaterialDesignDataGridRow}">
+                    <Setter Property="ContextMenu" Value="{StaticResource menu}"></Setter>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+    </Grid>
+</UserControl>

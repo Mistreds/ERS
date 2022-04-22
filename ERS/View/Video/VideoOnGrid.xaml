@@ -1,18 +1,16 @@
-﻿<UserControl x:Class="ERS.View.Picture.PictureOnGrid"
+﻿<UserControl x:Class="ERS.View.Video.VideoOnGrid"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ERS.View.Picture"
+             xmlns:local="clr-namespace:ERS.View.Video"
              mc:Ignorable="d" 
-               xmlns:ViewModel="clr-namespace:ERS.Model"
-             d:DataContext="{d:DesignInstance Type=ViewModel:Picture}"
               xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 
              d:DesignHeight="250" d:DesignWidth="250" Background="White">
     <Grid>
         <Grid.Resources>
             <ContextMenu x:Key="Menu">
-                <MenuItem Header="Удалить" Click="MenuItem_Click"></MenuItem>
+                <MenuItem Header="Удалить"  Click="MenuItem_Click"></MenuItem>
                 <MenuItem Header="Скачать файл" Command="{Binding SaveFile}"></MenuItem>
             </ContextMenu>
         </Grid.Resources>
@@ -24,8 +22,8 @@
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>
             <RowDefinition Height="35"></RowDefinition>
-        </Grid.RowDefinitions> 
-        <Button Height="auto" Width="auto"  MouseDoubleClick="Button_MouseDoubleClick"  Command="{Binding DataContext.OpenGoodPage, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"  CommandParameter="{Binding Id}">
+        </Grid.RowDefinitions>
+        <Button Height="auto" Width="auto"  MouseDoubleClick="Button_MouseDoubleClick" >
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border >

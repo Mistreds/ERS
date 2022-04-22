@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ERS.View.Picture.PictureOnScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ERS.View.Picture"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
+               xmlns:ViewModel="clr-namespace:ERS.ViewModel"
+             d:DataContext="{d:DesignInstance Type=ViewModel:PictureViewModel}"
+              xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition x:Name="two_row"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Panel.ZIndex="100" Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Content="Назад" Command="{Binding BackPage}" Style="{StaticResource MaterialDesignFlatDarkButton}"></Button>
+        </Grid>
+        <Canvas Grid.Row="1"  Background="White" MouseWheel="Image_MouseWheel">
+            <Image Panel.ZIndex="0"   MouseDown="Btn_OnMouseDown"
+               MouseMove="Btn_OnMouseMove"
+               MouseUp="Btn_OnMouseUp" x:Name="Image" Source="{Binding SelectedPicture.Image}"  ></Image>
+        </Canvas>
+    </Grid>
+</UserControl>

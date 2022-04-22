@@ -14,7 +14,7 @@
             <RowDefinition Height="45"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF383838">
+        <Grid Grid.Row="0" Panel.ZIndex="2" Background="#FF383838">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0.5*"/>
@@ -29,10 +29,10 @@
             <Button x:Name="opPlacatsPage" Content="Плакаты" Grid.Column="3" Grid.Row="0" CommandParameter="2" Command="{Binding OpenPage}" >
 
             </Button>
-            <Button x:Name="opFilmsPage" Content="Фильмы" Grid.Column="4" Grid.Row="0" >
+            <Button x:Name="opFilmsPage" Content="Фильмы" Grid.Column="4" CommandParameter="3" Command="{Binding OpenPage}" Grid.Row="0" >
 
             </Button>
-            <Button x:Name="opDocsPage" Content="Документы" Grid.Column="5" Grid.Row="0" >
+            <Button x:Name="opDocsPage" Content="Документы" Grid.Column="5" Grid.Row="0"  CommandParameter="4" Command="{Binding OpenPage}" >
 
             </Button>
         </Grid>

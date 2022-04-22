@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,25 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ERS.View.Picture
+namespace ERS.View.Video
 {
     /// <summary>
-    /// Логика взаимодействия для PictureMain.xaml
+    /// Логика взаимодействия для AddVideo.xaml
     /// </summary>
-    public partial class PictureMain : UserControl
+    public partial class AddVideo : Window
     {
-        public PictureMain(ViewModel.PictureViewModel pictureViewModel)
+        public AddVideo()
         {
             InitializeComponent();
-            this.DataContext = pictureViewModel;
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
             
         }
+   
     }
 }
