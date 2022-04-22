@@ -67,7 +67,8 @@ namespace ERS.ViewModel
             addPicture.Show();
         });
         public ReactiveCommand<Unit, Unit> AddNewPicture => ReactiveCommand.Create(() => {
-            Model.Picture.AddPicture(NewPicture);
+            if (!Model.Picture.AddPicture(NewPicture))
+                return;
             GetPicture();
             NewPicture=new Model.AddPicture();  
         });

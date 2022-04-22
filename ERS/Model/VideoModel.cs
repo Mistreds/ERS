@@ -52,9 +52,11 @@ namespace ERS.Model
         {
             using (var db= new ConnectDB())
             {
-                if(video.VideoFile.FileByte.Count()==0)
+                if(video.VideoFile.FileByte==null)
                 {
-                    System.Windows.MessageBox.Show("Произошла ошибка при загрузке файла в бд","Ошибка");
+
+                    System.Windows.MessageBox.Show("Ошибка, не выбран файл","Ошибка");
+                    return false;
                 }
                 try
                 {
@@ -97,7 +99,8 @@ namespace ERS.Model
             this.Name=name;
             this.FileName = file_name;
             this.VideoFileId = videp_id;
-            this.Image=ToImage(file);
+            if(file!=null)
+                this.Image=ToImage(file);
         }
         public static void DeleteVideo(Video Video)
         {

@@ -50,7 +50,7 @@
             </TreeView.ItemTemplate>
         </TreeView>
         </GroupBox>
-        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+        <GridSplitter Grid.RowSpan="2" Grid.Column="1" ShowsPreview="False" Width="3"
         HorizontalAlignment="Center" VerticalAlignment="Stretch" ></GridSplitter>
         <ContentControl Grid.Row="1" Content="{Binding  SelectedGuide.Control}" Grid.Column="2"></ContentControl>
         <Grid Grid.Column="2">

@@ -20,7 +20,8 @@ namespace ERS.ViewModel
         public static VideoViewModel videoViewModel { get; private set; }
         private DocumentViewModel documentViewModel;
         private ObservableCollection<UserControl> _controls { get; set; }
-
+        [Reactive]
+        public int CurrentPage { get; set; }
         
         [Reactive]
         public UserControl MainControl { get; set; }
@@ -43,10 +44,12 @@ namespace ERS.ViewModel
         private void OpenPageCommand(string id)
         {
             MainControl=_controls[Convert.ToInt32(id)];
+            CurrentPage=Convert.ToInt32(id);
         }
         private void OpenPageCommand(int id)
         {
             MainControl=_controls[id];
+            CurrentPage=Convert.ToInt32(id);
         }
         private void OpenPageCommandUser(UserControl userControl)
         {

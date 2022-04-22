@@ -30,7 +30,8 @@ namespace ERS.ViewModel
             adddoc.Show();
         });
         public ReactiveCommand<Unit, Unit> AddNewDocument => ReactiveCommand.Create(() => {
-            Model.Document.AddDocument(NewDocument);
+            if (!Model.Document.AddDocument(NewDocument))
+                return;
             Documents =Model.Document.GetDocuments(Find);
             NewDocument=new Model.AddDocument();
 

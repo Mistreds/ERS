@@ -28,12 +28,20 @@ namespace ERS.Model
         [Reactive]
         [NotMapped]
         public BitmapImage Image { get; set; }
-        public static void AddPicture(Picture picture)
+        public static bool AddPicture(Picture picture)
         {
             using (var db = new ConnectDB())
             {
+                if (picture.FileByte==null)
+                {
+
+                    System.Windows.Forms.MessageBox.Show("Не выбрано изображение","Ошибка");
+                    return false;
+                }
+                    
                 db.Picture.Add(picture);
                 db.SaveChanges();
+                return true;
             }
         }
         public static void DeletePicture(Picture picture)
@@ -78,6 +86,7 @@ namespace ERS.Model
             this.Name=name;
             this.FileName = file_name;
             this.FileByte=file;
+            if(file!=null)
             this.Image=ToImage(file);
         }
         private BitmapImage ToImage(byte[] array)//Делаем из потока байтов картинку

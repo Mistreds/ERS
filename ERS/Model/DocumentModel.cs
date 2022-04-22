@@ -33,12 +33,19 @@ namespace ERS.Model
         public int DocFileId { get; set; }
         [Reactive]
         public DocFile DocFile { get; set; }
-        public static void AddDocument(Document doc)
+        public static bool AddDocument(Document doc)
         {
             using (var db=new ConnectDB())
             {
+                if (doc.DocFile.FileByte==null)
+                {
+
+                    System.Windows.MessageBox.Show("Ошибка, не выбран файл", "Ошибка");
+                    return false;
+                }
                 db.Document.Add(doc);
                 db.SaveChanges();
+                return true;
             }
         }
         public static ObservableCollection<Document> GetDocuments(string Find)
