@@ -16,8 +16,8 @@
         </Grid.RowDefinitions>
         <Grid  >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="170"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="8*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button Style="{StaticResource MaterialDesignFlatButton}" Content="Добавить документ" Width="170" Command="{Binding OpenNewDocument}"></Button>
             <Grid Grid.Column="2">

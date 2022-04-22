@@ -11,7 +11,7 @@
              d:DesignHeight="450" d:DesignWidth="800" Background="White" x:Name="MainControl">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition Width="8*"></ColumnDefinition>
             
@@ -24,8 +24,25 @@
             <Style TargetType="TreeView"></Style>
 
         </Grid.Resources>
-        <GroupBox Header="Каталог" Grid.RowSpan="2"  >
-        <TreeView Background="AliceBlue"  Grid.RowSpan="2"   ItemsSource="{Binding Guides}" >
+        <Grid Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+
+                <ColumnDefinition Width="8*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource MaterialDesignFlatButton}" Content="Добавить справочник" Width="180" Command="{Binding AddNewGuide}"></Button>
+            <Grid Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="7*"></ColumnDefinition>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox wpf:HintAssist.IsFloating="False" x:Name="GuideFind"  Padding="10,7,0,7" Height="35" Margin="5" Foreground="Black" wpf:HintAssist.Hint="Поиск"   Style="{StaticResource MaterialDesignOutlinedTextBox}" ></TextBox>
+                <Button Grid.Column="1" Width="150" Content="Поиск" Command="{Binding FindGuide}"  CommandParameter="{Binding ElementName=GuideFind, Path=Text}"></Button>
+            </Grid>
+        </Grid>
+       
+        <GroupBox Header="Каталог"  Grid.Row="1"  >
+        <TreeView Background="AliceBlue"    ItemsSource="{Binding Guides}" >
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectedItemChanged">
                     <i:InvokeCommandAction  Command="{Binding Path=DataContext.SelectGuide,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}" CommandParameter="{Binding Path=SelectedItem,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeView}}}"></i:InvokeCommandAction>
@@ -33,7 +50,7 @@
             </i:Interaction.Triggers>
             <TreeView.Resources>
                 <ContextMenu x:Key="menu">
-                    <MenuItem Header="Добавить новый элемент"  Command="{Binding Path=DataContext.AddNewGuide,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"></MenuItem>
+
                     <MenuItem Header="Удалить элемент"  Command="{Binding Path=DataContext.DeleteGuid,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"  CommandParameter="{Binding Path=SelectedItem,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TreeView}}}"></MenuItem>
                 </ContextMenu>
             </TreeView.Resources>
@@ -50,16 +67,10 @@
             </TreeView.ItemTemplate>
         </TreeView>
         </GroupBox>
-        <GridSplitter Grid.RowSpan="2" Grid.Column="1" ShowsPreview="False" Width="3"
+        
+        <GridSplitter Grid.Row="1"  Grid.Column="1" ShowsPreview="False" Width="3"
         HorizontalAlignment="Center" VerticalAlignment="Stretch" ></GridSplitter>
         <ContentControl Grid.Row="1" Content="{Binding  SelectedGuide.Control}" Grid.Column="2"></ContentControl>
-        <Grid Grid.Column="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="7*"></ColumnDefinition>
-                <ColumnDefinition Width="3*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <TextBox wpf:HintAssist.IsFloating="False" x:Name="GuideFind"  Padding="10,7,0,7" Height="35" Margin="5" Foreground="Black" wpf:HintAssist.Hint="Поиск"   Style="{StaticResource MaterialDesignOutlinedTextBox}" ></TextBox>
-            <Button Grid.Column="1" Width="150" Content="Поиск" Command="{Binding FindGuide}"  CommandParameter="{Binding ElementName=GuideFind, Path=Text}"></Button>
-        </Grid>
+       
     </Grid>
 </UserControl>
