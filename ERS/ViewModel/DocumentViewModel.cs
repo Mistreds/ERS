@@ -37,7 +37,7 @@ namespace ERS.ViewModel
 
         });
         public ReactiveCommand<string, Unit> FindDocument => ReactiveCommand.Create<string>(FindGuideCommand);
-        private void FindGuideCommand(string find)
+        private void FindGuideCommand(string find)  
         {
             if (string.IsNullOrEmpty(find))
                 Documents =Model.Document.GetDocuments("");

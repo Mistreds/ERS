@@ -52,7 +52,7 @@ namespace ERS.Model
         {
             using (var db= new ConnectDB())
             {
-                if(video.VideoFile.FileByte==null)
+                if(video.VideoFile==null)
                 {
 
                     System.Windows.MessageBox.Show("Ошибка, не выбран файл","Ошибка");
