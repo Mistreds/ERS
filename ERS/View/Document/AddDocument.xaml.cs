@@ -23,5 +23,11 @@ namespace ERS.View.Document
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
+
+        }
     }
 }

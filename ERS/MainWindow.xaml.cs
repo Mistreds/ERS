@@ -29,5 +29,10 @@ namespace ERS
             DataContext=new ViewModel.MainViewModel();
             
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginAnimation(OpacityProperty, View.Animation.StartOpacAnim());
+        }
     }
 }

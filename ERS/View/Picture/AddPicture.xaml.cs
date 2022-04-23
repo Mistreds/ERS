@@ -23,5 +23,10 @@ namespace ERS.View.Picture
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
+        }
     }
 }

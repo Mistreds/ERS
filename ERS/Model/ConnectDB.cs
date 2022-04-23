@@ -18,7 +18,7 @@ namespace ERS.Model
         public DbSet<DocFile> DocFile { get; set; }
         public ConnectDB()
         {
-           //Database.EnsureDeleted();
+       //    Database.EnsureDeleted();
             Database.EnsureCreated();
             //Database.Migrate();
         }

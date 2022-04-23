@@ -8,6 +8,7 @@
              d:DataContext="{d:DesignInstance Type=ViewModel:MainViewModel}"
               xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="MainWindow" Height="550" Width="900">
     <Window.Resources>
         <Style TargetType="Button" x:Key="NavButton" BasedOn="{StaticResource  MaterialDesignOutlinedButton}">

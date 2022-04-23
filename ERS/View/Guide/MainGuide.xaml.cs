@@ -25,5 +25,10 @@ namespace ERS.View.Guide
             InitializeComponent();
             DataContext = guideViewModel;
         }
+
+        private void MainControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
+        }
     }
 }

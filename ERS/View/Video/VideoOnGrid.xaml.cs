@@ -35,5 +35,10 @@ namespace ERS.View.Video
         {
             ViewModel.MainViewModel.videoViewModel.SelectVideo(DataContext as Model.Video);
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
+        }
     }
 }

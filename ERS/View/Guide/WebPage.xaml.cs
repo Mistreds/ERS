@@ -26,23 +26,18 @@ namespace ERS.View.Guide
         public WebPage(string url)
         {
             InitializeComponent();
-            //Browser.Navigated += (sender, args) => { HideScriptErrors((WebBrowser)sender, true); };
-            WindowsFormsHost host = new WindowsFormsHost();
-            //GeckoWebBrowser browser = new GeckoWebBrowser();
-            //host.Child = browser;
-            //MainGrid.Children.Add(host);
-            //browser.Navigate("http://www.google.com");
-            //if (url!=null) ;
-             //   Browser.Navigate(new Uri(url));
-             dfs.Address = url;
+            dfs.Address = url;
             dfs.AddressChanged += Dfs_AddressChanged;
         }
 
         private void Dfs_AddressChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-           
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
         }
 
-        
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

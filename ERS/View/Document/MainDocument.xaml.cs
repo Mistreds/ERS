@@ -25,5 +25,10 @@ namespace ERS.View.Document
             InitializeComponent();
             this.DataContext = documentViewModel;
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
+        }
     }
 }

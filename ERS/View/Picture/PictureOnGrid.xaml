@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ERS.View.Picture"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
                xmlns:ViewModel="clr-namespace:ERS.Model"
              d:DataContext="{d:DesignInstance Type=ViewModel:Picture}"
               xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 

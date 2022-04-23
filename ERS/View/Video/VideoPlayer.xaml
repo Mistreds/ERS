@@ -4,25 +4,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ERS.View.Video"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d"  Unloaded="UserControl_Unloaded"
              d:DesignHeight="450" d:DesignWidth="800" Background="White">  
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="30" ></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
         </Grid.RowDefinitions>
         <MediaElement LoadedBehavior="Manual" x:Name="Media"></MediaElement>
-        <Slider x:Name="slider"  Grid.Row="1" Style="{StaticResource   MaterialDesignSlider}"></Slider>
+        <Slider x:Name="slider"  Margin="10,0,10,0"  Grid.Row="1" Style="{StaticResource   MaterialDesignSlider}"></Slider>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button  x:Name="stop" Grid.Column="2" Content="Стоп" Style="{StaticResource  MaterialDesignFloatingActionButton}" Click="stop_Click" ></Button>
-            <Button  x:Name="start" Grid.Column="1" Content="Старт" Style="{StaticResource  MaterialDesignFloatingActionButton}" Click="start_Click" ></Button>
+
+            <Button  x:Name="stop" Grid.Column="1"   >
+                <Image>
+
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Setter Property="Source" Value="/Image/play.png"></Setter>
+                            <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsPlaying}" Value="True">
+                                    <Setter Property="Source" Value="/Image/pause.png"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                        </Style>
+                        
+                    </Image.Style>
+                </Image>
+                <Button.Style >
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFloatingActionButton}">
+                        <EventSetter  Event="Click" Handler="start_Click"></EventSetter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            
         </Grid>
     </Grid>
 </UserControl>

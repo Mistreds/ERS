@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ERS.View.Guide"
            xmlns:ViewModel="clr-namespace:ERS.ViewModel"
+        Loaded="Window_Loaded"
              d:DataContext="{d:DesignInstance Type=ViewModel:GuideViewModel}"
               xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
@@ -16,15 +17,30 @@
                 <ComboBox  wpf:HintAssist.HintOpacity="1" wpf:HintAssist.Hint="Родительский элемент" Width="350" Margin="5" wpf:HintAssist.IsFloating="True"  ItemsSource="{Binding GuidCombo}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding NewGuide.MainGuideId}" ></ComboBox>
                 <TextBox Text="{Binding NewGuide.Name}"  wpf:HintAssist.HintOpacity="1" Width="350" Margin="5"  wpf:HintAssist.Hint="Наименование" wpf:HintAssist.IsFloating="True" ></TextBox>
                 <StackPanel Orientation="Horizontal" Width="350" Margin="5" >
-                    <Label Margin="40,0,0,0" Content="Ввести адрес" HorizontalAlignment="Center"></Label>
-                    <ToggleButton IsChecked="{Binding NewGuide.IsByte}" HorizontalAlignment="Center" ></ToggleButton>
-                    <Label Content="Выбрать локальный html файл" ></Label>
+                    <Label  Content="Выбрать локальный html файл" ></Label>
+                    <ToggleButton IsChecked="{Binding NewGuide.IsWeb}" HorizontalAlignment="Center" ></ToggleButton>
+                    
+                    <Label Content="Ввести адрес" HorizontalAlignment="Center"></Label>
                 </StackPanel>
-                <StackPanel  Width="350" Margin="5" Orientation="Horizontal" Visibility="{Binding NewGuide.IsByte, Converter={StaticResource BooleanToVisibilityConverter} }">
+                <StackPanel  Width="350" Margin="5" Orientation="Horizontal" Visibility="{Binding NewGuide.IsWeb, Converter={StaticResource InverseBoolToVisConverter} }">
                     <TextBox IsReadOnly="True" Width="215" Text="{Binding NewGuide.FileName}"></TextBox>
-                    <Button Margin="5,0,0,0" Content="Выбрать файл" Command="{Binding NewGuide.OpenFile}" ></Button>
+                    <Button Margin="5,0,0,0"  Width="130" Content="Выбрать файл" Command="{Binding NewGuide.OpenFile}" ></Button>
                 </StackPanel>
-                <TextBox wpf:HintAssist.HintOpacity="1" Width="350" Margin="5"  wpf:HintAssist.Hint="URL" wpf:HintAssist.IsFloating="True" Text="{Binding NewGuide.Url}" Visibility="{Binding NewGuide.IsByte, Converter={StaticResource InverseBoolToVisConverter} }"></TextBox>
+                <StackPanel  Width="350" Margin="5" Orientation="Horizontal" >
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding NewGuide.DirectoryFiles}" Value="{x:Null}">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <TextBox IsReadOnly="True" Width="215" Text="{Binding NewGuide.DirectoryFiles}"></TextBox>
+                    <Button Margin="5,0,0,0" Width="130" Content="Выбрать папку" Command="{Binding NewGuide.OpenDirectory }" ></Button>
+                </StackPanel>
+                <TextBox wpf:HintAssist.HintOpacity="1" Width="350" Margin="5"  wpf:HintAssist.Hint="URL" wpf:HintAssist.IsFloating="True" Text="{Binding NewGuide.Url}" Visibility="{Binding NewGuide.IsWeb, Converter={StaticResource BooleanToVisibilityConverter} }"></TextBox>
                 <Button  Width="150" Margin="5"  Content="Добавить" Command="{Binding AddNewGuideCommand}"></Button>
             </StackPanel >
         </Border>

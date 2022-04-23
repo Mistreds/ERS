@@ -35,5 +35,10 @@ namespace ERS.View.Picture
         {
             ViewModel.MainViewModel.pictureViewModel.SelectPicture(DataContext as Model.Picture);
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
+        }
     }
 }

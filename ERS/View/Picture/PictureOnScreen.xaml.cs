@@ -29,8 +29,10 @@ namespace ERS.View.Picture
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+
            Image.Height= this.ActualHeight;
             Image.Width= this.ActualWidth;
+            BeginAnimation(OpacityProperty, Animation.StartOpacAnim());
 
         }
         private void Btn_OnMouseDown(object sender, MouseButtonEventArgs e)

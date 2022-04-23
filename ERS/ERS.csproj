@@ -243,6 +243,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PictureViewModel.cs" />
     <Compile Include="ViewModel\VideoViewModel.cs" />
+    <Compile Include="View\Animation.cs" />
     <Compile Include="View\Document\AddDocument.xaml.cs">
       <DependentUpon>AddDocument.xaml</DependentUpon>
     </Compile>
@@ -387,7 +388,10 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\pause.png" />
+    <Resource Include="Image\play.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\video-preview-pic.jpg" />
   </ItemGroup>

@@ -22,6 +22,8 @@ namespace ERS.ViewModel
         public int Scale { get; set; }
         [Reactive]
         public int ScaleGrid { get; set; }
+        [Reactive]
+        public bool IsPlaying { get; set; } 
         public VideoViewModel(OpenPageDelegate OpenPageDelegate, OpenPageId openPageId)
         {
             this.openPageId = openPageId;
