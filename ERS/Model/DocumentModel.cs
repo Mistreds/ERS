@@ -37,7 +37,8 @@ namespace ERS.Model
         {
             using (var db=new ConnectDB())
             {
-                if (doc.DocFile.FileByte==null)
+
+                if (doc.DocFile==null)
                 {
 
                     System.Windows.MessageBox.Show("Ошибка, не выбран файл", "Ошибка");

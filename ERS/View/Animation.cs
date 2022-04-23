@@ -15,7 +15,7 @@ namespace ERS.View
             DoubleAnimation _oa = new DoubleAnimation();
             _oa.From = 0;
             _oa.To = 1;
-            _oa.Duration = new Duration(TimeSpan.FromMilliseconds(800d));
+            _oa.Duration = new Duration(TimeSpan.FromMilliseconds(500d));
             return _oa;
         }
     }
